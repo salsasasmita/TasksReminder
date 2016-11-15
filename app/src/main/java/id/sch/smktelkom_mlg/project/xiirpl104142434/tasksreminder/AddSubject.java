@@ -14,6 +14,7 @@ public class AddSubject extends AppCompatActivity {
     EditText etSubject, etTeacher;
     Button buttonSave;
     TextView tvhasil;
+    DB_Controller controller;
 
 
     @Override
@@ -27,7 +28,7 @@ public class AddSubject extends AppCompatActivity {
         etTeacher = (EditText) findViewById(R.id.editTextTeacher);
         tvhasil = (TextView) findViewById(R.id.tvHasil);
         buttonSave = (Button) findViewById(R.id.buttonSave);
-
+        controller = new DB_Controller(this, "", null, 1);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,11 +58,7 @@ public class AddSubject extends AppCompatActivity {
     }
 
     private void doKlik() {
-        StringBuilder builder = new StringBuilder();
-        String subject = etSubject.getText().toString();
-        String teacher = etTeacher.getText().toString();
-
-        tvhasil.setText(builder);
+        controller.insert_subject(etSubject.getText().toString(), etTeacher.getText().toString());
     }
 
 }
