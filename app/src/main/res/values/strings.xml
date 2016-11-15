@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TasksReminder</string>
+    <string name="title_activity_list_subject">ListSubject</string>
+    <string name="title_activity_list_task">ListTask</string>
 </resources>

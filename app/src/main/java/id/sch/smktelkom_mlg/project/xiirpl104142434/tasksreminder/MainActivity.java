@@ -25,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddTask.class));
+                startActivity(new Intent(MainActivity.this, ListTask.class));
             }
         });
 
         findViewById(R.id.buttonaddsubject).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddSubject.class));
+                startActivity(new Intent(MainActivity.this, ListSubject.class));
             }
         });
     }

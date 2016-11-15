@@ -17,6 +17,14 @@
         </activity>
         <activity android:name=".AddTask" />
         <activity android:name=".AddSubject" />
+        <activity
+            android:name=".ListSubject"
+            android:label="@string/title_activity_list_subject"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListTask"
+            android:label="@string/title_activity_list_task"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
