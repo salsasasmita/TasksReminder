@@ -1,20 +1,24 @@
 package id.sch.smktelkom_mlg.project.xiirpl104142434.tasksreminder;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 /**
  * Created by Dwi Enggar on 14/11/2016.
  */
 
-public class AddTask extends AppCompatActivity {
+public class AddTask extends AppCompatActivity implements View.OnClickListener {
     Button bsave, btnrDate, btnrTime, bDueDatePicker;
     EditText etName, etDueDate, etNotes, etrDate, etrTime;
     Spinner sspinner;
@@ -37,6 +41,7 @@ public class AddTask extends AppCompatActivity {
         btnrTime = (Button) findViewById(R.id.btnTimeReminder);
         bDueDatePicker = (Button) findViewById(R.id.buttonDueDate);
 
+        bDueDatePicker.setOnClickListener(this);
 
         findViewById(R.id.buttonSave).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +62,27 @@ public class AddTask extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == bDueDatePicker) {
+
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            mYear = c.get(Calendar.YEAR);
+            mMonth = c.get(Calendar.MONTH);
+            mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    etDueDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                }
+            }, mYear, mMonth, mDay);
+            datePickerDialog.show();
+        }
     }
 }
 
