@@ -28,6 +28,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     EditText etName, etDueDate, etNotes, etrDate, etrTime;
     Spinner sspinner;
     TextView tvhasil;
+    DB_Controller controller;
+    Integer idsbj;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
@@ -49,7 +51,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         bDueDatePicker.setOnClickListener(this);
         btnrDate.setOnClickListener(this);
         btnrTime.setOnClickListener(this);
-
+        controller = new DB_Controller(this, "", null, 1);
         sspinner.setOnItemSelectedListener(this);
 
         // Loading spinner data from database
@@ -59,8 +61,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Task has been saved", Toast.LENGTH_LONG).show();
-                tvhasil.setText(etName.getText().toString() + " " + etDueDate.getText().toString() + " " + etNotes.getText().toString() + " " + etrDate.getText().toString()
-                        + " " + etrTime.getText().toString());
+                idsbj = sspinner.getSelectedItemPosition() + 1;
+                controller.insert_task(etName.getText().toString(), idsbj, etDueDate.getText().toString(), etNotes.getText().toString(), etrDate.getText().toString(), etrTime.getText().toString());
+                //tvhasil.setText(etrTime.getText().toString());
             }
         });
 

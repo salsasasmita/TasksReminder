@@ -16,6 +16,8 @@ import java.util.List;
 
 public class DB_Controller extends SQLiteOpenHelper {
 
+    public static final String TABLE1 = "TASK";
+
     public DB_Controller(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, "TASK.db", factory, version);
     }
@@ -68,7 +70,7 @@ public class DB_Controller extends SQLiteOpenHelper {
         textView.setText("");
         while (cursor.moveToNext()) {
             textView.append(cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3) + " " + cursor.getString(4)
-                    + " " + cursor.getString(5));
+                    + " " + cursor.getString(5) + " " + cursor.getString(6));
         }
     }
 
@@ -76,7 +78,7 @@ public class DB_Controller extends SQLiteOpenHelper {
         Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM SUBJECT", null);
         textView.setText("");
         while (cursor.moveToNext()) {
-            textView.append(cursor.getString(1) + " " + cursor.getString(2));
+            textView.append(cursor.getString(0) + " " + cursor.getString(1) + " " + cursor.getString(2));
         }
     }
 

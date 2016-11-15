@@ -41,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
         controller = new DB_Controller(this, "", null, 1);
     }
 
+    //public void listsbj(View view) {
+    //  controller.listallsubject(listsbj);
+    //}
     public void listsbj(View view) {
-        controller.listallsubject(listsbj);
+        controller.listalltask(listsbj);
     }
 }

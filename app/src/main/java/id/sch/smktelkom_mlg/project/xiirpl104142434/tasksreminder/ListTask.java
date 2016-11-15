@@ -11,6 +11,8 @@ import android.view.View;
 
 public class ListTask extends AppCompatActivity {
 
+    DB_Controller controller;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class ListTask extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.gotoTask).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ListTask.this, AddTask.class));
@@ -35,6 +37,7 @@ public class ListTask extends AppCompatActivity {
         });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -44,6 +47,8 @@ public class ListTask extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
 
 
