@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Dwi Enggar on 14/11/2016.
  */
@@ -75,5 +78,28 @@ public class DB_Controller extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             textView.append(cursor.getString(1) + " " + cursor.getString(2));
         }
+    }
+
+    public List<String> getAllLabels() {
+        List<String> list = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT * FROM SUBJECT";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);//selectQuery,selectedArguments
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(cursor.getString(1));//adding 2nd column data
+            } while (cursor.moveToNext());
+        }
+        // closing connection
+        cursor.close();
+        db.close();
+
+        // returning lables
+        return list;
     }
 }
