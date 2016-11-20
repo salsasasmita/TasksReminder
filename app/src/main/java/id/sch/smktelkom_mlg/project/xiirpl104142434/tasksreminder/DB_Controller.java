@@ -67,9 +67,6 @@ public class DB_Controller extends SQLiteOpenHelper {
     }
 
 
-
-    public void update_task(String taskname_old, int idsubject_new, String taskname_new, String duedate_new, String notes_new,
-                            String rdate_new, String rtime_new) {
     public void update_task(String taskname_new, int idsubject_new, String duedate_new, String notes_new,
                             String rdate_new, String rtime_new, String taskname_old, String duedate_old) {
         this.getWritableDatabase().execSQL("UPDATE TASK SET TASKNAME = '" + taskname_new + "', IDSUBJECT = " + idsubject_new + ", DUEDATE = '" + duedate_new + "', NOTES = '" + notes_new
