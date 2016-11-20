@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,7 +16,9 @@ import java.util.List;
  */
 
 public class DB_Controller extends SQLiteOpenHelper {
-
+    public static final String TABLE2 = "SUBJECT";
+    public static final String SUBJECT = "SUBJECT";
+    public static final String TEACHER = "TEACHER";
     public static final String TABLE1 = "TASK";
 
     public DB_Controller(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -26,7 +29,7 @@ public class DB_Controller extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE TASK (IDTASK INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "TASKNAME TEXT UNIQUE, IDSUBJECT INTEGER, DUEDATE TEXT, NOTES TEXT, RDATE TEXT, RTIME TEXT)");
-        db.execSQL("CREATE TABLE SUBJECT (IDSUBJECT INTEGER PRIMARY KEY AUTOINCREMENT, SUBJECT TEXT UNIQUE, TEACHER TEXT)");
+        db.execSQL("CREATE TABLE SUBJECT (IDSUBJECT INTEGER PRIMARY KEY AUTOINCREMENT, SUBJECT TEXT, TEACHER TEXT)");
 
     }
 
@@ -103,5 +106,27 @@ public class DB_Controller extends SQLiteOpenHelper {
 
         // returning lables
         return list;
+    }
+
+    public List<DatabaseModelSubject> getDataFromDB() {
+        List<DatabaseModelSubject> modelList = new ArrayList<DatabaseModelSubject>();
+        String query = "select * from " + SUBJECT;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                DatabaseModelSubject model = new DatabaseModelSubject();
+                model.setSubject(cursor.getString(1));
+                model.setTeacher(cursor.getString(2));
+
+                modelList.add(model);
+            } while (cursor.moveToNext());
+        }
+
+        Log.d("student data", modelList.toString());
+
+        return modelList;
     }
 }
