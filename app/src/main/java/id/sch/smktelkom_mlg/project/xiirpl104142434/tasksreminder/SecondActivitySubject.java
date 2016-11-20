@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class SecondActivitySubject extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private FloatingActionButton fab2;
+    Button buttonEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class SecondActivitySubject extends AppCompatActivity {
 
         helpher = new DB_Controller(this, "", null, 1);
         dbList = new ArrayList<DatabaseModelSubject>();
-        dbList = helpher.getDataFromDB();
+        dbList = helpher.getDataFromDB2();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycleview);
 
@@ -52,12 +54,15 @@ public class SecondActivitySubject extends AppCompatActivity {
 
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
 
+
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SecondActivitySubject.this, AddSubject.class));
             }
         });
+
+        buttonEdit = (Button) findViewById(R.id.buttonEdit);
     }
 
     @Override

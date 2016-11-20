@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AddSubject extends AppCompatActivity {
+public class EditSubject extends AppCompatActivity {
 
     EditText etSubject, etTeacher;
     Button buttonSave;
@@ -20,9 +20,9 @@ public class AddSubject extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_subject);
+        setContentView(R.layout.activity_edit_subject);
 
-        setTitle("Add Subject");
+        setTitle("Edit Subject");
 
         etSubject = (EditText) findViewById(R.id.editTextSubject);
         etTeacher = (EditText) findViewById(R.id.editTextTeacher);
@@ -33,17 +33,31 @@ public class AddSubject extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Button OK KLIK!
+
                 if (isValid()) {
                     doKlik();
-                    Toast.makeText(getApplicationContext(), "Subject has been added", Toast.LENGTH_LONG).show();
-                    etSubject.setText("");
-                    etTeacher.setText("");
+                    Toast.makeText(getApplicationContext(), "Subject has been edited", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void doKlik() {
+        isValid();
+        controller.insert_subject(etSubject.getText().toString(), etTeacher.getText().toString());
+    }
+
     private boolean isValid() {
         boolean valid = true;
 
@@ -63,7 +77,7 @@ public class AddSubject extends AppCompatActivity {
         {
             etSubject.setError(null);
         }
-        if (teacher.isEmpty()){
+       if (teacher.isEmpty()){
             etTeacher.setError("Teacher is Empty!");
             valid = false;
         }
@@ -75,20 +89,7 @@ public class AddSubject extends AppCompatActivity {
         else {
             etTeacher.setError(null);
         }
-        return valid;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void doKlik() {
-        controller.insert_subject(etSubject.getText().toString(), etTeacher.getText().toString());
+            return valid;
     }
 
 }

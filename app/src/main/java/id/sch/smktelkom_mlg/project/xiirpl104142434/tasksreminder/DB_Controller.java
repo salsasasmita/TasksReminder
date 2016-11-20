@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ import java.util.List;
 public class DB_Controller extends SQLiteOpenHelper {
 
     public static final String TABLE1 = "TASK";
+
+    SQLiteDatabase database;
 
     public DB_Controller(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, "TASK.db", factory, version);
@@ -135,9 +138,9 @@ public class DB_Controller extends SQLiteOpenHelper {
         return modelList;
     }
 
-    public List<DatabaseModelSubject> getDataFromDB() {
+    public List<DatabaseModelSubject> getDataFromDB2() {
         List<DatabaseModelSubject> modelList = new ArrayList<DatabaseModelSubject>();
-        String query = "select * from " + SUBJECT;
+        String query = "select * from SUBJECT";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
@@ -155,5 +158,13 @@ public class DB_Controller extends SQLiteOpenHelper {
         Log.d("student data", modelList.toString());
 
         return modelList;
+    }
+
+    public int update(long _id, String subject, String teacher) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("SUBJECT", subject);
+        contentValues.put("TEACHER", teacher);
+        int i = database.update("SUBJECT", contentValues, "IDSUBJECT" + " = " + _id, null);
+        return i;
     }
 }
