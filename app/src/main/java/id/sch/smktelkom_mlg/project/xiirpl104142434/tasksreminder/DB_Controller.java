@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,9 +15,7 @@ import java.util.List;
  */
 
 public class DB_Controller extends SQLiteOpenHelper {
-    public static final String TABLE2 = "SUBJECT";
-    public static final String SUBJECT = "SUBJECT";
-    public static final String TEACHER = "TEACHER";
+
     public static final String TABLE1 = "TASK";
 
     public DB_Controller(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -105,6 +102,37 @@ public class DB_Controller extends SQLiteOpenHelper {
 
         // returning lables
         return list;
+    }
+
+    /* Retrive  data from database */
+    public List<DatabaseModel> getDataFromDB() {
+        List<DatabaseModel> modelList = new ArrayList<DatabaseModel>();
+        String query = "select * from TASK inner join SUBJECT on task.idsubject = subject.idsubject";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                DatabaseModel model = new DatabaseModel();
+                model.setTaskname(cursor.getString(1));
+                model.setIdsubject(cursor.getString(2));
+                model.setDuedates(cursor.getString(3));
+                model.setNotes(cursor.getString(4));
+                model.setRdate(cursor.getString(5));
+                model.setRtime(cursor.getString(6));
+                model.setSubject(cursor.getString(8));
+                model.setTeacher(cursor.getString(9));
+
+                modelList.add(model);
+            } while (cursor.moveToNext());
+        }
+
+
+        Log.d("student data", modelList.toString());
+
+
+        return modelList;
     }
 
     public List<DatabaseModelSubject> getDataFromDB() {

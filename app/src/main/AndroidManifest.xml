@@ -25,7 +25,8 @@
         <activity
             android:name=".ListTask"
             android:label="@string/title_activity_list_task"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SecondActivity"></activity>
     </application>
 
 </manifest>
