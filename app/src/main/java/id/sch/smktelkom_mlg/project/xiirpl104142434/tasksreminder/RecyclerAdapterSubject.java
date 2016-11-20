@@ -20,12 +20,17 @@ public class RecyclerAdapterSubject extends RecyclerView.Adapter<RecyclerAdapter
 
     static List<DatabaseModelSubject> dbList;
     static Context context;
+    Eminem eminem;
 
     RecyclerAdapterSubject(Context context, List<DatabaseModelSubject> dbList) {
         RecyclerAdapterSubject.dbList = new ArrayList<DatabaseModelSubject>();
         RecyclerAdapterSubject.context = context;
         RecyclerAdapterSubject.dbList = dbList;
 
+    }
+
+    public interface Eminem{
+        public void doEdit(int pos);
     }
 
     @Override
@@ -52,7 +57,7 @@ public class RecyclerAdapterSubject extends RecyclerView.Adapter<RecyclerAdapter
         return dbList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView subject, teacher;
 
@@ -62,11 +67,12 @@ public class RecyclerAdapterSubject extends RecyclerView.Adapter<RecyclerAdapter
             teacher = (TextView) itemLayoutView.findViewById(R.id.tvTeacher);
             itemLayoutView.setOnClickListener(this);
 
+
         }
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context, ListSubject.class);
+            Intent intent = new Intent(context, EditSubject.class);
 
             Bundle extras = new Bundle();
             extras.putInt("position", getAdapterPosition());

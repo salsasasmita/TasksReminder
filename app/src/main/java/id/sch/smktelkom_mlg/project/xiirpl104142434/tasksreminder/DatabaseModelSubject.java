@@ -6,6 +6,15 @@ package id.sch.smktelkom_mlg.project.xiirpl104142434.tasksreminder;
 public class DatabaseModelSubject {
     private String subject;
     private String teacher;
+    private String idsubject;
+
+    public String getIdsubject() {
+        return idsubject;
+    }
+
+    public void setIdsubject(String idsubject) {
+        this.idsubject = subject;
+    }
 
     public String getSubject() {
         return subject;

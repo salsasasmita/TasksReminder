@@ -1,21 +1,24 @@
 package id.sch.smktelkom_mlg.project.xiirpl104142434.tasksreminder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditSubject extends AppCompatActivity {
 
     EditText etSubject, etTeacher;
     Button buttonSave;
-    TextView tvhasil;
     DB_Controller controller;
-
+    List<DatabaseModelSubject> dbList;
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,24 @@ public class EditSubject extends AppCompatActivity {
         etTeacher = (EditText) findViewById(R.id.editTextTeacher);
         buttonSave = (Button) findViewById(R.id.buttonSave);
         controller = new DB_Controller(this, "", null, 1);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+
+        dbList= new ArrayList<DatabaseModelSubject>();
+        dbList= controller.getDataFromDB2();
+
+        // 5. get status value from bundle
+        position = bundle.getInt("position");
+
+        if(dbList.size()>0){
+            //String idsubject=  dbList.get(position).getIdsubject();
+            String name= dbList.get(position).getSubject();
+            String email=dbList.get(position).getTeacher();
+            etSubject.setText(name);
+            etTeacher.setText(email);
+            //tvsbj.setText(idsubject);
+        }
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override

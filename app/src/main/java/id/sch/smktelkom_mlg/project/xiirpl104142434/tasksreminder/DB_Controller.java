@@ -67,6 +67,8 @@ public class DB_Controller extends SQLiteOpenHelper {
                 + "', RDATE = '" + rdate_new + "', RTIME = '" + rtime_new + "' WHERE TASKNAME = '" + taskname_old + "'");
     }
 
+    //public void update_subject
+
     public void listalltask(TextView textView) {
         Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM TASK", null);
         textView.setText("");
@@ -148,6 +150,7 @@ public class DB_Controller extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 DatabaseModelSubject model = new DatabaseModelSubject();
+                //model.setIdsubject(cursor.getString(0));
                 model.setSubject(cursor.getString(1));
                 model.setTeacher(cursor.getString(2));
 

@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Dimas Bramantyo on 11/20/2016.
  */
-public class SecondActivitySubject extends AppCompatActivity {
+public class SecondActivitySubject extends AppCompatActivity implements RecyclerAdapterSubject.Eminem {
     DB_Controller helpher;
     List<DatabaseModelSubject> dbList;
     RecyclerView mRecyclerView;
@@ -53,8 +53,6 @@ public class SecondActivitySubject extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
-
-
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +60,7 @@ public class SecondActivitySubject extends AppCompatActivity {
             }
         });
 
-        buttonEdit = (Button) findViewById(R.id.buttonEdit);
+        //RecyclerAdapterSubject.Eminem eminem
     }
 
     @Override
@@ -81,5 +79,10 @@ public class SecondActivitySubject extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void doEdit(int pos) {
+        startActivity(new Intent(SecondActivitySubject.this, EditSubject.class));
     }
 }
