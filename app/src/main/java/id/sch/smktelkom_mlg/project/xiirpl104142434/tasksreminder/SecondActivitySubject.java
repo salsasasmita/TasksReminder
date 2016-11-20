@@ -28,7 +28,7 @@ public class SecondActivitySubject extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_second_subject);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setTitle("ListSubject");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
