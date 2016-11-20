@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.List;
 public class EditSubject extends AppCompatActivity {
 
     EditText etSubject, etTeacher;
+    TextView tvoldsbj, tvoldtch;
     Button buttonSave;
     DB_Controller controller;
     List<DatabaseModelSubject> dbList;
@@ -30,6 +32,8 @@ public class EditSubject extends AppCompatActivity {
         etSubject = (EditText) findViewById(R.id.editTextSubject);
         etTeacher = (EditText) findViewById(R.id.editTextTeacher);
         buttonSave = (Button) findViewById(R.id.buttonSave);
+        tvoldsbj = (TextView) findViewById(R.id.subjectold);
+        tvoldtch = (TextView) findViewById(R.id.teacherold);
         controller = new DB_Controller(this, "", null, 1);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -47,6 +51,8 @@ public class EditSubject extends AppCompatActivity {
             String email=dbList.get(position).getTeacher();
             etSubject.setText(name);
             etTeacher.setText(email);
+            tvoldsbj.setText(name);
+            tvoldtch.setText(email);
             //tvsbj.setText(idsubject);
         }
 
@@ -75,8 +81,7 @@ public class EditSubject extends AppCompatActivity {
     }
 
     private void doKlik() {
-        isValid();
-        controller.insert_subject(etSubject.getText().toString(), etTeacher.getText().toString());
+        controller.update_subject(etSubject.getText().toString(), etTeacher.getText().toString(), tvoldsbj.getText().toString(), tvoldtch.getText().toString());
     }
 
     private boolean isValid() {

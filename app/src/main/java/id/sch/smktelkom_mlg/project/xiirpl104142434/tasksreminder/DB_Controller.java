@@ -67,7 +67,9 @@ public class DB_Controller extends SQLiteOpenHelper {
                 + "', RDATE = '" + rdate_new + "', RTIME = '" + rtime_new + "' WHERE TASKNAME = '" + taskname_old + "'");
     }
 
-    //public void update_subject
+    public void update_subject (String subject,String teacher, String oldsubject, String oldteacher){
+        this.getWritableDatabase().execSQL("UPDATE SUBJECT SET SUBJECT = '" + subject + "', TEACHER = '" + teacher + "' WHERE SUBJECT = '"+ oldsubject +"' AND TEACHER = '" + oldteacher + "'");
+    }
 
     public void listalltask(TextView textView) {
         Cursor cursor = this.getReadableDatabase().rawQuery("SELECT * FROM TASK", null);
