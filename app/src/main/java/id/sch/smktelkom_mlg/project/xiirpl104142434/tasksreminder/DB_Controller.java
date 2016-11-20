@@ -61,6 +61,12 @@ public class DB_Controller extends SQLiteOpenHelper {
         this.getWritableDatabase().delete("TASK", "TASKNAME = '" + taskname + "'", null);
     }
 
+    public void delete_subject(String subjectname, String teachername) {
+        this.getWritableDatabase().execSQL(" DELETE FROM SUBJECT WHERE SUBJECT = '"+subjectname+"' AND TEACHER = '"+teachername+"'");
+    }
+
+
+
     public void update_task(String taskname_old, int idsubject_new, String taskname_new, String duedate_new, String notes_new,
                             String rdate_new, String rtime_new) {
         this.getWritableDatabase().execSQL("UPDATE TASK SET TASKNAME = '" + taskname_new + "', IDSUBJECT = " + idsubject_new + ", DUEDATE = '" + duedate_new + "', NOTES = '" + notes_new

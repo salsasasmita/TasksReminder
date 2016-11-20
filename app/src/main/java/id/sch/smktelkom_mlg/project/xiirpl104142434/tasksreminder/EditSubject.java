@@ -1,7 +1,9 @@
 package id.sch.smktelkom_mlg.project.xiirpl104142434.tasksreminder;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,11 +15,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static id.sch.smktelkom_mlg.project.xiirpl104142434.tasksreminder.RecyclerAdapterSubject.context;
+
 public class EditSubject extends AppCompatActivity {
 
     EditText etSubject, etTeacher;
     TextView tvoldsbj, tvoldtch;
-    Button buttonSave;
+    Button buttonSave,  buttonDelete;
     DB_Controller controller;
     List<DatabaseModelSubject> dbList;
     int position;
@@ -34,6 +38,8 @@ public class EditSubject extends AppCompatActivity {
         buttonSave = (Button) findViewById(R.id.buttonSave);
         tvoldsbj = (TextView) findViewById(R.id.subjectold);
         tvoldtch = (TextView) findViewById(R.id.teacherold);
+        buttonDelete = (Button) findViewById(R.id.buttonDelete);
+
         controller = new DB_Controller(this, "", null, 1);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -65,6 +71,42 @@ public class EditSubject extends AppCompatActivity {
                     doKlik();
                     Toast.makeText(getApplicationContext(), "Subject has been edited", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        context);
+
+                // set title
+                alertDialogBuilder.setTitle("Warning");
+
+                // set dialog message
+                alertDialogBuilder
+                        .setMessage("Are you sure to delete this subject?")
+                        .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // if this button is clicked, close
+                                // current activity
+                                controller.delete_subject(etSubject.getText().toString(),etTeacher.getText().toString());
+                            }
+                        })
+                        .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                            }
+                        });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                // show it
+                alertDialog.show();
+                onBackPressed();
             }
         });
 

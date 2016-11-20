@@ -39,7 +39,6 @@ public class SecondActivitySubject extends AppCompatActivity implements Recycler
         helpher = new DB_Controller(this, "", null, 1);
         dbList = new ArrayList<DatabaseModelSubject>();
         dbList = helpher.getDataFromDB2();
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recycleview);
 
         mRecyclerView.setHasFixedSize(true);
