@@ -18,6 +18,7 @@ import java.util.List;
 public class DB_Controller extends SQLiteOpenHelper {
 
     public static final String TABLE1 = "TASK";
+    public static final String IDTASK = "IDTASK";
 
     public DB_Controller(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, "TASK.db", factory, version);
@@ -60,10 +61,10 @@ public class DB_Controller extends SQLiteOpenHelper {
         this.getWritableDatabase().delete("TASK", "TASKNAME = '" + taskname + "'", null);
     }
 
-    public void update_task(String taskname_old, int idsubject_new, String taskname_new, String duedate_new, String notes_new,
-                            String rdate_new, String rtime_new) {
+    public void update_task(String taskname_new, int idsubject_new, String duedate_new, String notes_new,
+                            String rdate_new, String rtime_new, String taskname_old, String duedate_old) {
         this.getWritableDatabase().execSQL("UPDATE TASK SET TASKNAME = '" + taskname_new + "', IDSUBJECT = " + idsubject_new + ", DUEDATE = '" + duedate_new + "', NOTES = '" + notes_new
-                + "', RDATE = '" + rdate_new + "', RTIME = '" + rtime_new + "' WHERE TASKNAME = '" + taskname_old + "'");
+                + "', RDATE = '" + rdate_new + "', RTIME = '" + rtime_new + "' WHERE TASKNAME = '" + taskname_old + "' AND DUEDATE = '" + duedate_old + "'");
     }
 
     public void listalltask(TextView textView) {
@@ -135,5 +136,28 @@ public class DB_Controller extends SQLiteOpenHelper {
 
 
         return modelList;
+    }
+
+    public String[] getArray(int id) {
+        Cursor cursor = this.getWritableDatabase().rawQuery("select * from TASK where IDTASK = \"" + id + "\" ", null);
+
+        String[] maplist = new String[cursor.getColumnCount()];  // looping through all rows and adding to list
+
+        try {
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {
+                    do {
+                        for (int i = 1; i < cursor.getColumnCount(); i++) {
+                            maplist[i - 1] = cursor.getString(i);
+                        }
+                    } while (cursor.moveToNext());
+                }
+            }
+        } catch (Error e) {
+
+        }
+
+        cursor.close();
+        return maplist;
     }
 }

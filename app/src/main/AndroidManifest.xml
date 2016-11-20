@@ -25,7 +25,8 @@
             android:name=".ListTask"
             android:label="@string/title_activity_list_task"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".SecondActivity" />
+        <activity android:name=".EditTask" />
     </application>
 
 </manifest>

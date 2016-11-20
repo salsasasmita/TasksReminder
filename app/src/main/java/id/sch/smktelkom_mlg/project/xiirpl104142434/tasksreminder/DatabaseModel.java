@@ -4,6 +4,8 @@ package id.sch.smktelkom_mlg.project.xiirpl104142434.tasksreminder;
  * Created by PRABHU on 11/12/2015.
  */
 public class DatabaseModel {
+    private String idtask;
+    private String tasknameold;
     private String taskname;
     private String idsubject;
     private String duedates;
@@ -12,6 +14,22 @@ public class DatabaseModel {
     private String rtime;
     private String subject;
     private String teacher;
+
+    public String getIdtask() {
+        return idtask;
+    }
+
+    public void setIdtask(String idtask) {
+        this.idtask = idtask;
+    }
+
+    public String getTasknameold() {
+        return tasknameold;
+    }
+
+    public void setTasknameold() {
+        this.tasknameold = tasknameold;
+    }
 
     public String getTaskname() {
         return taskname;

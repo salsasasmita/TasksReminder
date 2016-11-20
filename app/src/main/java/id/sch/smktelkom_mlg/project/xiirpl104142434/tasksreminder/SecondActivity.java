@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,6 +17,7 @@ public class SecondActivity extends AppCompatActivity {
     DB_Controller controller;
     List<DatabaseModel> dbList;
     RecyclerView mRecyclerView;
+    CardView cVTask;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private FloatingActionButton fab;
