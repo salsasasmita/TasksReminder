@@ -26,7 +26,6 @@ public class AddSubject extends AppCompatActivity {
 
         etSubject = (EditText) findViewById(R.id.editTextSubject);
         etTeacher = (EditText) findViewById(R.id.editTextTeacher);
-        tvhasil = (TextView) findViewById(R.id.tvHasil);
         buttonSave = (Button) findViewById(R.id.buttonSave);
         controller = new DB_Controller(this, "", null, 1);
 
@@ -34,18 +33,49 @@ public class AddSubject extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Button OK KLIK!
-                if (etSubject.getText().toString().isEmpty()) {
-                    etSubject.setError("Subject is empty!");
-                } else if (etTeacher.getText().toString().isEmpty()) {
-                    etTeacher.setError("Teacher is empty!");
-                } else {
+                if (isValid()) {
                     doKlik();
                     Toast.makeText(getApplicationContext(), "Subject has been added", Toast.LENGTH_LONG).show();
+                    etSubject.setText("");
+                    etTeacher.setText("");
                 }
             }
         });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    private boolean isValid() {
+        boolean valid = true;
+
+        String subject = etSubject.getText().toString();
+        String teacher = etTeacher.getText().toString();
+
+        if (subject.isEmpty()){
+            etSubject.setError("Subject is Empty!");
+            valid = false;
+        }
+        else if (subject.length()>21)
+        {
+            etSubject.setError("Maximun 20 caracters!");
+            valid = false;
+        }
+        else
+        {
+            etSubject.setError(null);
+        }
+        if (teacher.isEmpty()){
+            etTeacher.setError("Teacher is Empty!");
+            valid = false;
+        }
+        else if (subject.length()>21)
+        {
+            etTeacher.setError("Maximun 20 caracters!");
+            valid = false;
+        }
+        else {
+            etTeacher.setError(null);
+        }
+        return valid;
     }
 
     @Override

@@ -20,6 +20,8 @@ public class DB_Controller extends SQLiteOpenHelper {
     public static final String TABLE1 = "TASK";
     public static final String IDTASK = "IDTASK";
 
+    SQLiteDatabase database;
+
     public DB_Controller(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, "TASK.db", factory, version);
     }
@@ -28,8 +30,7 @@ public class DB_Controller extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE TASK (IDTASK INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "TASKNAME TEXT UNIQUE, IDSUBJECT INTEGER, DUEDATE TEXT, NOTES TEXT, RDATE TEXT, RTIME TEXT)");
-        db.execSQL("CREATE TABLE SUBJECT (IDSUBJECT INTEGER PRIMARY KEY AUTOINCREMENT, SUBJECT TEXT UNIQUE, TEACHER TEXT)");
-
+        db.execSQL("CREATE TABLE SUBJECT (IDSUBJECT INTEGER PRIMARY KEY AUTOINCREMENT, SUBJECT TEXT, TEACHER TEXT)");
     }
 
     @Override
@@ -61,10 +62,22 @@ public class DB_Controller extends SQLiteOpenHelper {
         this.getWritableDatabase().delete("TASK", "TASKNAME = '" + taskname + "'", null);
     }
 
+    public void delete_subject(String subjectname, String teachername) {
+        this.getWritableDatabase().execSQL(" DELETE FROM SUBJECT WHERE SUBJECT = '"+subjectname+"' AND TEACHER = '"+teachername+"'");
+    }
+
+
+
+    public void update_task(String taskname_old, int idsubject_new, String taskname_new, String duedate_new, String notes_new,
+                            String rdate_new, String rtime_new) {
     public void update_task(String taskname_new, int idsubject_new, String duedate_new, String notes_new,
                             String rdate_new, String rtime_new, String taskname_old, String duedate_old) {
         this.getWritableDatabase().execSQL("UPDATE TASK SET TASKNAME = '" + taskname_new + "', IDSUBJECT = " + idsubject_new + ", DUEDATE = '" + duedate_new + "', NOTES = '" + notes_new
-                + "', RDATE = '" + rdate_new + "', RTIME = '" + rtime_new + "' WHERE TASKNAME = '" + taskname_old + "' AND DUEDATE = '" + duedate_old + "'");
+                + "', RDATE = '" + rdate_new + "', RTIME = '" + rtime_new + "' WHERE TASKNAME = '" + taskname_old + "'");
+    }
+
+    public void update_subject (String subject,String teacher, String oldsubject, String oldteacher){
+        this.getWritableDatabase().execSQL("UPDATE SUBJECT SET SUBJECT = '" + subject + "', TEACHER = '" + teacher + "' WHERE SUBJECT = '"+ oldsubject +"' AND TEACHER = '" + oldteacher + "'");
     }
 
     public void listalltask(TextView textView) {
@@ -136,6 +149,37 @@ public class DB_Controller extends SQLiteOpenHelper {
 
 
         return modelList;
+    }
+
+    public List<DatabaseModelSubject> getDataFromDB2() {
+        List<DatabaseModelSubject> modelList = new ArrayList<DatabaseModelSubject>();
+        String query = "select * from SUBJECT";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                DatabaseModelSubject model = new DatabaseModelSubject();
+                //model.setIdsubject(cursor.getString(0));
+                model.setSubject(cursor.getString(1));
+                model.setTeacher(cursor.getString(2));
+
+                modelList.add(model);
+            } while (cursor.moveToNext());
+        }
+
+        Log.d("student data", modelList.toString());
+
+        return modelList;
+    }
+
+    public int update(long _id, String subject, String teacher) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("SUBJECT", subject);
+        contentValues.put("TEACHER", teacher);
+        int i = database.update("SUBJECT", contentValues, "IDSUBJECT" + " = " + _id, null);
+        return i;
     }
 
     public String[] getArray(int id) {

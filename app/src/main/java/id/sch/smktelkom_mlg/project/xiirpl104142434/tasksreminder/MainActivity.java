@@ -23,28 +23,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.imgBtnSubject).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                startActivity(new Intent(MainActivity.this, SecondActivitySubject.class));
             }
         });
 
-        findViewById(R.id.buttonaddsubject).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.imgBtnTask).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ListSubject.class));
+                startActivity(new Intent(MainActivity.this, ListTask.class));
             }
         });
 
-        listsbj = (TextView) findViewById(R.id.listsbj);
-        controller = new DB_Controller(this, "", null, 1);
-    }
-
-    //public void listsbj(View view) {
-    //  controller.listallsubject(listsbj);
-    //}
-    public void listsbj(View view) {
-        controller.listalltask(listsbj);
     }
 }

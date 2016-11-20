@@ -75,14 +75,41 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/buttonSave"
-            android:layout_width="match_parent"
+            android:layout_width="171dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:onClick="addsubject"
-            android:text="Save" />
+            android:text="SAVE" />
+
+        <Button
+            android:text="DELETE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDelete"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/subjectold"
+        android:text="subjectold"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/teacherold"
+        android:text="teacherold"
+        android:visibility="gone" />
 </LinearLayout>
