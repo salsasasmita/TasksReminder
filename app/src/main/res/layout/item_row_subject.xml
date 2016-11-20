@@ -15,17 +15,17 @@
 
         <TextView
             android:id="@+id/tvSubject"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="left"
             android:padding="10dp"
             android:text="Subject"
-            android:textAlignment="center"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/tvTeacher"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -33,6 +33,26 @@
             android:padding="10dp"
             android:text="Teacher"
             android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/buttonEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@+id/buttonDelete"
+            android:layout_toStartOf="@+id/buttonDelete"
+            android:text="EDIT" />
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/buttonEdit"
+            android:text="DELETE" />
+
 
     </RelativeLayout>
 

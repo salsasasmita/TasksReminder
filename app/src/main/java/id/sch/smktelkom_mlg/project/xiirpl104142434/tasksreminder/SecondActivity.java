@@ -1,12 +1,15 @@
 package id.sch.smktelkom_mlg.project.xiirpl104142434.tasksreminder;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,7 @@ public class SecondActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private FloatingActionButton fab2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,15 @@ public class SecondActivity extends AppCompatActivity {
         // specify an adapter (see also next example)
         mAdapter = new RecyclerAdapterSubject(this, dbList);
         mRecyclerView.setAdapter(mAdapter);
+
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SecondActivity.this, AddSubject.class));
+            }
+        });
     }
 
     @Override
