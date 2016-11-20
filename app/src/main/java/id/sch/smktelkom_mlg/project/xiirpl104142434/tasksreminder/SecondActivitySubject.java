@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Dimas Bramantyo on 11/20/2016.
  */
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivitySubject extends AppCompatActivity {
     DB_Controller helpher;
     List<DatabaseModelSubject> dbList;
     RecyclerView mRecyclerView;
@@ -55,7 +55,7 @@ public class SecondActivity extends AppCompatActivity {
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SecondActivity.this, AddSubject.class));
+                startActivity(new Intent(SecondActivitySubject.this, AddSubject.class));
             }
         });
     }
