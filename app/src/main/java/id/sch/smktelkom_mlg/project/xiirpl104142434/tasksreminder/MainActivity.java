@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setTitle("Tasks Reminder");
         findViewById(R.id.imgBtnSubject).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.imgBtnTask).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ListTask.class));
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
             }
         });
 

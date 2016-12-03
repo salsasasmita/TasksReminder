@@ -19,7 +19,7 @@ public class ListTask extends AppCompatActivity {
         setContentView(R.layout.activity_list_task);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setTitle("List Tasks");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

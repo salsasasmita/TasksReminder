@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginRight="10dp"
-            app:srcCompat="@mipmap/calendar" />
+            android:src="@drawable/icon_subject"
+            app:srcCompat="@drawable/icon_subject" />
 
         <ImageView
             android:id="@+id/imgBtnTask"
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="10dp"
-            app:srcCompat="@mipmap/clock" />
+            app:srcCompat="@drawable/icon_task" />
     </LinearLayout>
 
     <LinearLayout

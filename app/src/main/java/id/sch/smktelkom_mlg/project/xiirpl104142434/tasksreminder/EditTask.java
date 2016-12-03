@@ -106,6 +106,8 @@ public class EditTask extends Activity implements View.OnClickListener, AdapterV
                         ettasknameold.getText().toString(),
                         etduedateold.getText().toString());
                 //tvhasil.setText(etrTime.getText().toString());
+                startActivity(new Intent(EditTask.this, SecondActivity.class));
+                finish();
             }
         });
 
@@ -126,7 +128,9 @@ public class EditTask extends Activity implements View.OnClickListener, AdapterV
                                 // if this button is clicked, close
                                 // current activity
                                 controller.delete_task(etName.getText().toString());
-                                onBackPressed();
+                                startActivity(new Intent(EditTask.this, SecondActivity.class));
+                                finish();
+
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {

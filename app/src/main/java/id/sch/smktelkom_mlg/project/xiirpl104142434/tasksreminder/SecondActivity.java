@@ -51,6 +51,7 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SecondActivity.this, AddTask.class));
+                finish();
             }
         });
 

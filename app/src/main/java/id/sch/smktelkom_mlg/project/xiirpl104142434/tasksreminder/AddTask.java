@@ -2,6 +2,7 @@ package id.sch.smktelkom_mlg.project.xiirpl104142434.tasksreminder;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -62,8 +63,11 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Task has been saved", Toast.LENGTH_LONG).show();
                 idsbj = sspinner.getSelectedItemPosition() + 1;
+                String idsbj2 = idsbj.toString();
                 controller.insert_task(etName.getText().toString(), idsbj, etDueDate.getText().toString(), etNotes.getText().toString(), etrDate.getText().toString(), etrTime.getText().toString());
-                //tvhasil.setText(etrTime.getText().toString());
+                //tvhasil.setText(idsbj2);
+                startActivity(new Intent(AddTask.this, SecondActivity.class));
+                finish();
             }
         });
 
