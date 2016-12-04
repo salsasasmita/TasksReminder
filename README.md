@@ -1,26 +1,32 @@
-# TasksReminder
+#<p align="center"> Tasks Reminder </p>
 
-### Task Reminder adalah suatu aplikasi yang digunakan untuk membuat catatan terkait pelajaran yang memiliki task.
-### Aplikasi ini telah menyediakan beberapa subject yang akan memudahkan untuk menambahkan guru beserta mata pelajarannya.
-### Aplikasi ini dilengkapi CURD sebagai fasilitas utama pada notes. 
+### **About**
+Tasks Reminder adalah suatu aplikasi yang digunakan untuk mempermudah pengguna membuat catatan terkait tugas maupun ulangan. Aplikasi ini menyediakan menu tasks dan menu subject yang dapat digunakan untuk menambahkan daftar task, guru, serta mata pelajarannya. Selain itu, pengguna juga dapat menghapus dan mengedit catatan yang sudah dibuat
 
-
-## SCREENSHOT
+### **SCREENSHOOT**
+######<p align="center"> -- Halaman Utama -- </p>
 ![SS1](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203410.png?w=256&h=377)
+<br>
+<br>
+<br>
+######<p align="center"> -- Subject -- </p>
 ![SS2](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203413.png?w=256&h=377)
 ![SS3](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203417.png?w=256&h=377)
 ![SS4](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203425.png?w=256&h=377)
+<br>
+<br>
+<br>
+######<p align="center"> -- Tasks -- </p>
 ![SS5](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203444.png?w=256&h=377)
 ![SS6](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203648.png?w=256&h=377)
 ![SS7](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203651.png?w=256&h=377)
-![SS8](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203705.png?w=256&h=377)
-![SS9](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203711.png?w=256&h=377)
-![SS10](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203714.png?w=256&h=377)
+<br>
+<br>
 
-## VIDEO 
+### **VIDEO**
 [![VIDEO](https://salsasasmita.files.wordpress.com/2016/12/screenshot_20161203-203410.png?w=256&h=377)](https://youtu.be/jBZRBNnnKHw)
 
-## IDENTITAS KELOMPOK
+### **IDENTITAS KELOMPOK**
 1. Absen 04
   * Nama : Ainun Nisa'
   * Kelas : XIIRPL1
@@ -52,3 +58,6 @@
   * NIS :
   * User Github : salsasasmita
   * Nama Sekolah : SMK TELKOM MALANG
+
+### **APK**
+https://drive.google.com/a/smktelkom-mlg.sch.id/file/d/0B_q33HA0JI5hbDRiSVZ3QlltUjA/view?usp=sharing
